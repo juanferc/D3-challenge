@@ -58,3 +58,10 @@
   fill: #e75480;
   cursor: pointer;
 }
+
+.state_abbreviation {
+  color: "black";
+  font-size: 10px;
+  fill: "black";
+  text-anchor: middle;
+}

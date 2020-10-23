@@ -103,7 +103,17 @@ d3.csv("assets/data/data.csv").then(function(p_data, err) {
       .attr("cy", d => yLinearScale(d["healthcare"]))
       .attr("r", 20)
       .attr("fill", "red")
-      .attr("opacity", ".5");
+      .attr("opacity", ".5")
+      .attr("class", d => d.abbr);
+    
+    circlesGroup.append("text")
+      .text(d => d.abbr)
+      .attr("class","state_abbreviation")
+      .attr("dx", d => xLinearScale(d["poverty"]))
+      .attr("dy", d => yLinearScale(d["healthcare"]));
+
+      
+
   
     // Create group for two x-axis labels
     var labelsGroup = chartGroup.append("g")
@@ -114,7 +124,7 @@ d3.csv("assets/data/data.csv").then(function(p_data, err) {
       .attr("y", 20)
       .attr("value", "poverty") // value to grab for event listener
       .classed("active", true)
-      .text("Poverty Rate");
+      .text("Poverty Rate (%)");
   
     // var albumsLabel = labelsGroup.append("text")
     //   .attr("x", 0)
@@ -130,7 +140,7 @@ d3.csv("assets/data/data.csv").then(function(p_data, err) {
       .attr("x", 0 - (height / 2))
       .attr("dy", "1em")
       .classed("axis-text", true)
-      .text("Healthcare Rate");
+      .text("Healthcare Rate (%)");
   
     // updateToolTip function above csv import
     // var circlesGroup = updateToolTip(chosenXAxis, circlesGroup);
